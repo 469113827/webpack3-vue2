@@ -62,7 +62,7 @@ module.exports = {
         path: path.resolve(__dirname, './dist'),
 
         // 静态资源路径
-        publicPath: '/activity/dist/',
+        publicPath: '/webpack-vue/dist/',
 
         // 文件名
         filename: `js/[name].js?ver=[hash]`,

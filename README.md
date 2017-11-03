@@ -21,11 +21,15 @@ webpack核心概念：entry(入口)，output(出口),loader(模块处理器),plu
     │   ├── output.js                      // 输出
     │   ├── plugins.js                     // 配置插件
     ├── src                                // 源码
+    |   ├── component                      // 存放vue公用组件库
     |   ├── images                         // 源码图片
     |   ├── less                           
     |       ├── reset.less                 // 公用less文件
     |       ├── pageA.less                 // 页面A的less文件
     |       ├── pageB.less                 // 页面B的less文件
+    |   ├── view                           // 存放vue页面
+    |       ├── pageA.vue                  // 页面A的vue文件
+    |       ├── pageB.vue                  // 页面B的vue文件
     |   ├── js                            
     |       ├── commom                     // 共有JS代码存放
     |       ├── pageA.js                   // 页面A的js文件
@@ -152,7 +156,16 @@ output为我们需要处理的文件的输出地，一般统一放在一级目�
     },
 
 loader很容易理解，就是告诉webpack，要用什么方法去处理我们的模块。
-这里用了个css文件单独打包的插件extract-text-webpack-plugin。后面会有插件详解。
+这里用了个postcss，是一个使用JavaScript插件来转换CSS的工具。以自动补充兼容前缀为例。
+新建一个postcss.config.js专门放置postcss参数，引入autoprefixer，并配置兼容要求。
+
+    plugins: [
+             require('autoprefixer')(
+                {browsers:'ios >= 8'}
+             ),
+         ]
+         
+这里还用了个css文件单独打包的插件extract-text-webpack-plugin。后面会有插件详解。
 刚我们一共使用了2个插件，需要在module里添加:
     
      plugins: [
