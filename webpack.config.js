@@ -113,5 +113,10 @@ module.exports = {
     plugins: [
         ...htmlWebpackPluginArr,
         extractLESS
-    ]
+    ],
+    devServer: {
+        port: 8080,      // 设置端口号
+        inline: false,   // 是否启动无刷新url进行页面更新
+        hot: true,       // 只刷新改变的部分
+    }
 }
